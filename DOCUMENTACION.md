@@ -1,36 +1,43 @@
 # Optimización de búsqueda de números primos
 
 ## Introducción
-El código original calcula números primos entre 1 y 100,000 evaluando divisores desde 2 hasta n-1 para cada número.  
-Problema principal: complejidad alta y tiempos de ejecución elevados.
+El código original calcula números primos entre 1 y 100 000 comprobando divisores desde 2 hasta n-1, lo que provoca complejidad O(n²) y tiempos elevados.
 
-## Optimización
-Se aplicaron las siguientes técnicas:
+## Optimización aplicada
+- Reducir comprobaciones hasta √n.
+- Usar list comprehensions para construir listas.
+- Implementar la Criba de Eratóstenes con NumPy para operaciones vectorizadas.
 
-1. **Reducir rango del bucle hasta √n**  
-   En la lógica de primalidad, basta verificar divisores hasta la raíz cuadrada.
+## ¿Qué es la Criba de Eratóstenes y cómo funciona?
+La Criba de Eratóstenes es un método eficiente para encontrar todos los primos hasta un límite N:
 
-2. **List comprehensions**  
-   Se utilizaron para construir de forma eficiente la colección final de primos desde la criba.
+1. Crear una lista booleana `sieve[0..N]` inicializada a True (ignorando 0 y 1).
+2. Empezar en p = 2 (primer primo). Si `sieve[p]` es True, marcar como no primos todos los múltiplos de p desde p*p hasta N (p*p, p*p+p, ...).
+3. Incrementar p al siguiente índice True y repetir hasta p > √N.
+4. Los índices que quedan True son números primos.
 
-3. **NumPy**  
-   Se implementó una criba de Eratóstenes usando arrays booleanos y operaciones vectorizadas, reduciendo drásticamente el tiempo.
+Ventajas:
+- Evita comprobaciones repetidas por número.
+- Con operaciones vectorizadas (NumPy) las asignaciones de rangos son muy rápidas.
 
 ## Resultados
-- Se comparó tiempo del código original vs optimizado.
-- Se ejecutó `cProfile` sobre la versión optimizada y se guardó en `profiling_optimizado.txt`.
-- Se identificaron funciones críticas por tiempo acumulado.
-- Se generaron gráficos:
-  - `distribucion_tiempos.png`
-  - `comparativa_tiempos.png`
+### Profiling (cProfile)
+- Archivo: `profiling_optimizado.txt`
+- Función dominante: `primos_optimizado_numpy`
+
+### Gráficos
+- `distribucion_tiempos.png`  
+- `comparativa_tiempos.png`
+
+Inclúyelos en la misma carpeta y referencia aquí:
+
+![Distribución de tiempos](distribucion_tiempos.png)  
+![Comparativa de tiempos](comparativa_tiempos.png)
 
 ## Conclusiones
-La versión optimizada mejora significativamente el rendimiento gracias a:
-- menor número de iteraciones,
-- operaciones vectorizadas con NumPy,
-- mejor estructura algorítmica (criba).
+La implementación con criba y NumPy reduce drásticamente el tiempo frente al enfoque ingenuo.
 
-### Recomendaciones futuras
-- Evitar algoritmos O(n²) en rangos grandes.
-- Usar profiling desde etapas tempranas.
-- Documentar métricas de rendimiento en cada cambio relevante.
+## Enlace al repositorio
+Reemplaza el marcador por el enlace real a tu repo en GitHub:
+
+Repositorio: [[ENLACE AL REPOSITORIO](https://github.com/Jhoelink/AA_04.git)]

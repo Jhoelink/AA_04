@@ -21,6 +21,9 @@ Se aplicaron las siguientes técnicas:
 - Se ejecutó `cProfile` sobre la versión optimizada y se guardó en `profiling_optimizado.txt`.
 - Se identificaron funciones críticas por tiempo acumulado.
 - Se generaron gráficos:
+  
+  <img width="400" height="53" alt="image" src="https://github.com/user-attachments/assets/0eb49672-946e-4fc8-99d4-01a9251f2315" />
+
   - `distribucion_tiempos.png`
   - `comparativa_tiempos.png`
 
